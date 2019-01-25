@@ -1,0 +1,43 @@
+# Reading C:/altera/clean-13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do BabysFirstCPU_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\clean-13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\clean-13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/2-to-4-Decoder {C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module decoder_2to4
+# 
+# Top level modules:
+# 	decoder_2to4
+# 
+# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/2-to-4-Decoder {C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module decoder_2to4_tb
+# 
+# Top level modules:
+# 	decoder_2to4_tb
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  decoder_2to4_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps decoder_2to4_tb 
+# Loading work.decoder_2to4_tb
+# Loading work.decoder_2to4
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# t= 0.0nsen=0A=0B=0Y=1111
+# t= 0.0nsen=1A=0B=0Y=1110
+# t= 0.0nsen=1A=0B=1Y=1101
+# t= 0.0nsen=1A=1B=0Y=1011
+# t= 0.0nsen=1A=1B=1Y=0111
+# t= 0.0nsen=0A=1B=1Y=1111

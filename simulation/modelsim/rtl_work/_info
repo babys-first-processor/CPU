@@ -1,0 +1,45 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\CPU\simulation\modelsim
+vdecoder_2to4
+IioAmDWIQ50GkH;mVSXo`a3
+V2^9dWPUY@VI:Y?J4FHGl`3
+Z1 dC:\CPU\simulation\modelsim
+w1548396565
+8C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v
+FC:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v
+L0 1
+Z2 OV;L;10.1d;51
+r1
+31
+Z3 o-vlog01compat -work work -O0
+!i10b 1
+!s100 Ri8B^k0FLSkH:j8KcYkV<2
+!s85 0
+!s108 1548397302.915000
+!s107 C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/2-to-4-Decoder|C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v|
+!s101 -O0
+Z4 !s92 -vlog01compat -work work +incdir+C:/CPU/Examples/2-to-4-Decoder -O0
+vdecoder_2to4_tb
+!i10b 1
+!s100 RH@PTI88>2K_?dSh8kY2>2
+IDGS6aX7nDNUWd?O6kh]?f3
+V2d7=?ZJJj4n<1>MhYikQf0
+R1
+w1548397007
+8C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v
+FC:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1548397303.039000
+!s107 C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/2-to-4-Decoder|C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v|
+!s101 -O0
+R3
+R4
