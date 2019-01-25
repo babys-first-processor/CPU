@@ -1,13 +1,8 @@
-|decoder_2to4
-Y3 <= Y3$latch.DB_MAX_OUTPUT_PORT_TYPE
-Y2 <= Y2$latch.DB_MAX_OUTPUT_PORT_TYPE
-Y1 <= Y1$latch.DB_MAX_OUTPUT_PORT_TYPE
-Y0 <= Y0$latch.DB_MAX_OUTPUT_PORT_TYPE
-A => Decoder0.IN0
-B => Decoder0.IN1
-en => Y0$latch.PRESET
-en => Y3$latch.PRESET
-en => Y2$latch.PRESET
-en => Y1$latch.PRESET
+|dff_async_reset
+q << q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data => q~reg0.DATAIN
+clk => q~reg0.CLK
+reset => q~reg0.ACLR
+enable => q~reg0.ENA
 
 

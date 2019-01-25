@@ -3,43 +3,43 @@ K3
 13
 cModel Technology
 Z0 dC:\CPU\simulation\modelsim
-vdecoder_2to4
-IioAmDWIQ50GkH;mVSXo`a3
-V2^9dWPUY@VI:Y?J4FHGl`3
+vdff_async_reset
+IJo8E5:BF]UhDVEXOWanhb2
+V3;N@4aIgVMfPHcOezbEd^1
 Z1 dC:\CPU\simulation\modelsim
-w1548396565
-8C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v
-FC:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v
+w1548428127
+8C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v
+FC:/CPU/Examples/D-Flip-Flop/dff_async_reset.v
 L0 1
 Z2 OV;L;10.1d;51
 r1
 31
 Z3 o-vlog01compat -work work -O0
 !i10b 1
-!s100 Ri8B^k0FLSkH:j8KcYkV<2
+!s100 h7;21ZF8jHLHAH62X7]0o0
 !s85 0
-!s108 1548397302.915000
-!s107 C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/2-to-4-Decoder|C:/CPU/Examples/2-to-4-Decoder/decoder_2to4.v|
+!s108 1548430060.588000
+!s107 C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/D-Flip-Flop|C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v|
 !s101 -O0
-Z4 !s92 -vlog01compat -work work +incdir+C:/CPU/Examples/2-to-4-Decoder -O0
-vdecoder_2to4_tb
+Z4 !s92 -vlog01compat -work work +incdir+C:/CPU/Examples/D-Flip-Flop -O0
+vdff_async_reset_tb
 !i10b 1
-!s100 RH@PTI88>2K_?dSh8kY2>2
-IDGS6aX7nDNUWd?O6kh]?f3
-V2d7=?ZJJj4n<1>MhYikQf0
+!s100 ><X7bl=`5z=bRSPg2Sb8:1
+Id[;h[F2>iWR6RH`RaolRI0
+VWI;P@UO[jWPEPm`?R0bgg2
 R1
-w1548397007
-8C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v
-FC:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v
+w1548430049
+8C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v
+FC:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v
 L0 1
 R2
 r1
 !s85 0
 31
-!s108 1548397303.039000
-!s107 C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/2-to-4-Decoder|C:/CPU/Examples/2-to-4-Decoder/decoder_2to4_tb.v|
+!s108 1548430060.651000
+!s107 C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/D-Flip-Flop|C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v|
 !s101 -O0
 R3
 R4
