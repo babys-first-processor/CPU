@@ -3,43 +3,43 @@ K3
 13
 cModel Technology
 Z0 dC:\CPU\simulation\modelsim
-vdff_async_reset
-IJo8E5:BF]UhDVEXOWanhb2
-V3;N@4aIgVMfPHcOezbEd^1
+vregfile32x64
+I9Q:F0aeFGRCbY7M0J4oO00
+V1dPU[BcA_68FUakW:>=381
 Z1 dC:\CPU\simulation\modelsim
-w1548428127
-8C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v
-FC:/CPU/Examples/D-Flip-Flop/dff_async_reset.v
+w1548435201
+8C:/CPU/regfile32x64.v
+FC:/CPU/regfile32x64.v
 L0 1
 Z2 OV;L;10.1d;51
 r1
 31
 Z3 o-vlog01compat -work work -O0
 !i10b 1
-!s100 h7;21ZF8jHLHAH62X7]0o0
+!s100 FAE]d7^U=?EFG8YcF]V4P2
 !s85 0
-!s108 1548430060.588000
-!s107 C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/D-Flip-Flop|C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v|
+!s108 1548435704.039000
+!s107 C:/CPU/regfile32x64.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU|C:/CPU/regfile32x64.v|
 !s101 -O0
-Z4 !s92 -vlog01compat -work work +incdir+C:/CPU/Examples/D-Flip-Flop -O0
-vdff_async_reset_tb
+!s92 -vlog01compat -work work +incdir+C:/CPU -O0
+vregfile32x64_tb
 !i10b 1
-!s100 ><X7bl=`5z=bRSPg2Sb8:1
-Id[;h[F2>iWR6RH`RaolRI0
-VWI;P@UO[jWPEPm`?R0bgg2
+!s100 ;0QzU13gQPCRIg_f83N>D2
+IkP3d]zb:n1T7NZ61k60k00
+VzBd1d^YD?dH_H:W3b20BQ1
 R1
-w1548430049
-8C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v
-FC:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v
+w1548435681
+8C:/CPU/Testbenches/regfile32x64_tb.v
+FC:/CPU/Testbenches/regfile32x64_tb.v
 L0 1
 R2
 r1
 !s85 0
 31
-!s108 1548430060.651000
-!s107 C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/D-Flip-Flop|C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v|
+!s108 1548435704.117000
+!s107 C:/CPU/Testbenches/regfile32x64_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Testbenches|C:/CPU/Testbenches/regfile32x64_tb.v|
 !s101 -O0
 R3
-R4
+!s92 -vlog01compat -work work +incdir+C:/CPU/Testbenches -O0

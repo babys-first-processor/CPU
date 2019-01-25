@@ -1,5 +1,5 @@
 Analysis & Synthesis report for BabysFirstCPU
-Fri Jan 25 10:27:31 2019
+Fri Jan 25 12:01:33 2019
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -14,8 +14,10 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  9. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
+ 12. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -41,16 +43,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Jan 25 10:27:31 2019      ;
+; Analysis & Synthesis Status        ; Successful - Fri Jan 25 12:01:33 2019      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; BabysFirstCPU                              ;
-; Top-level Entity Name              ; dff_async_reset                            ;
+; Top-level Entity Name              ; regfile32x64                               ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 1                                          ;
-;     Total combinational functions  ; 1                                          ;
-;     Dedicated logic registers      ; 1                                          ;
-; Total registers                    ; 1                                          ;
-; Total pins                         ; 5                                          ;
+; Total logic elements               ; 4,776                                      ;
+;     Total combinational functions  ; 2,728                                      ;
+;     Dedicated logic registers      ; 2,048                                      ;
+; Total registers                    ; 2048                                       ;
+; Total pins                         ; 209                                        ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -64,7 +66,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP3C16F484C6       ;                    ;
-; Top-level entity name                                                      ; dff_async_reset    ; BabysFirstCPU      ;
+; Top-level entity name                                                      ; regfile32x64       ; BabysFirstCPU      ;
 ; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -156,43 +158,43 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                      ;
-+----------------------------------------+-----------------+------------------------+-----------------------------------------------+---------+
-; File Name with User-Entered Path       ; Used in Netlist ; File Type              ; File Name with Absolute Path                  ; Library ;
-+----------------------------------------+-----------------+------------------------+-----------------------------------------------+---------+
-; Examples/D-Flip-Flop/dff_async_reset.v ; yes             ; User Verilog HDL File  ; C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v ;         ;
-+----------------------------------------+-----------------+------------------------+-----------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                               ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
+; regfile32x64.v                   ; yes             ; User Verilog HDL File  ; C:/CPU/regfile32x64.v        ;         ;
++----------------------------------+-----------------+------------------------+------------------------------+---------+
 
 
-+------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary          ;
-+---------------------------------------------+--------+
-; Resource                                    ; Usage  ;
-+---------------------------------------------+--------+
-; Estimated Total logic elements              ; 1      ;
-;                                             ;        ;
-; Total combinational functions               ; 1      ;
-; Logic element usage by number of LUT inputs ;        ;
-;     -- 4 input functions                    ; 0      ;
-;     -- 3 input functions                    ; 1      ;
-;     -- <=2 input functions                  ; 0      ;
-;                                             ;        ;
-; Logic elements by mode                      ;        ;
-;     -- normal mode                          ; 1      ;
-;     -- arithmetic mode                      ; 0      ;
-;                                             ;        ;
-; Total registers                             ; 1      ;
-;     -- Dedicated logic registers            ; 1      ;
-;     -- I/O registers                        ; 0      ;
-;                                             ;        ;
-; I/O pins                                    ; 5      ;
-; Embedded Multiplier 9-bit elements          ; 0      ;
-; Maximum fan-out node                        ; q~reg0 ;
-; Maximum fan-out                             ; 2      ;
-; Total fan-out                               ; 12     ;
-; Average fan-out                             ; 1.00   ;
-+---------------------------------------------+--------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 4,776     ;
+;                                             ;           ;
+; Total combinational functions               ; 2728      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 2568      ;
+;     -- 3 input functions                    ; 160       ;
+;     -- <=2 input functions                  ; 0         ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 2728      ;
+;     -- arithmetic mode                      ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 2048      ;
+;     -- Dedicated logic registers            ; 2048      ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 209       ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 2048      ;
+; Total fan-out                               ; 17233     ;
+; Average fan-out                             ; 3.32      ;
++---------------------------------------------+-----------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -200,7 +202,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |dff_async_reset           ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 5    ; 0            ; |dff_async_reset    ; work         ;
+; |regfile32x64              ; 2728 (2728)       ; 2048 (2048)  ; 0           ; 0            ; 0       ; 0         ; 209  ; 0            ; |regfile32x64       ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -210,14 +212,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1     ;
+; Total registers                              ; 2048  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 2048  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 32:1               ; 64 bits   ; 1344 LEs      ; 1344 LEs             ; 0 LEs                  ; No         ; |regfile32x64|rdDataA      ;
+; 32:1               ; 64 bits   ; 1344 LEs      ; 1344 LEs             ; 0 LEs                  ; No         ; |regfile32x64|rdDataB      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +-------------------------------+
@@ -225,7 +237,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -235,7 +247,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Fri Jan 25 10:27:30 2019
+    Info: Processing started: Fri Jan 25 12:01:29 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off BabysFirstCPU -c BabysFirstCPU
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file examples/4-to-1-mux/mux_4to1_tb.v
@@ -254,18 +266,33 @@ Info (12021): Found 1 design units, including 1 entities, in source file example
     Info (12023): Found entity 1: dff_async_reset
 Info (12021): Found 1 design units, including 1 entities, in source file examples/d-flip-flop/dff_async_reset_tb.v
     Info (12023): Found entity 1: dff_async_reset_tb
-Info (12127): Elaborating entity "dff_async_reset" for the top level hierarchy
+Info (12021): Found 1 design units, including 1 entities, in source file examples/4x16-register-file/regfile4x16.v
+    Info (12023): Found entity 1: regfile4x16
+Info (12021): Found 1 design units, including 1 entities, in source file examples/4x16-register-file/regfile4x16_tb.v
+    Info (12023): Found entity 1: regfile4x16_tb
+Info (12021): Found 1 design units, including 1 entities, in source file regfile32x64.v
+    Info (12023): Found entity 1: regfile32x64
+Info (12021): Found 1 design units, including 1 entities, in source file testbenches/regfile32x64_tb.v
+    Info (12023): Found entity 1: regfile32x64_tb
+Info (12127): Elaborating entity "regfile32x64" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/CPU/output_files/BabysFirstCPU.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 6 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 1 output pins
-    Info (21061): Implemented 1 logic cells
+Info (21057): Implemented 4985 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 81 input pins
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 4776 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4643 megabytes
-    Info: Processing ended: Fri Jan 25 10:27:31 2019
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4663 megabytes
+    Info: Processing ended: Fri Jan 25 12:01:33 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:04
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/CPU/output_files/BabysFirstCPU.map.smsg.
 
 

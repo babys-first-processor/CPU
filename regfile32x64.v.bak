@@ -1,0 +1,11 @@
+module regfile32x64(
+	input clk, 
+	input write,
+	input [4:0] wrAddr,
+   input [63:0] wrData,
+   input [4:0] rdAddrA,
+   output [63:0] rdDataA,
+   input [4:0] rdAddrB,
+   output [63:0] rdDataB);
+ 
+ reg[64:0] reg{0,32};

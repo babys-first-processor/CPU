@@ -10,24 +10,24 @@
 # ** Warning: Copied C:\altera\clean-13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/D-Flip-Flop {C:/CPU/Examples/D-Flip-Flop/dff_async_reset.v}
+# vlog -vlog01compat -work work +incdir+C:/CPU {C:/CPU/regfile32x64.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module dff_async_reset
+# -- Compiling module regfile32x64
 # 
 # Top level modules:
-# 	dff_async_reset
+# 	regfile32x64
 # 
-# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/D-Flip-Flop {C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v}
+# vlog -vlog01compat -work work +incdir+C:/CPU/Testbenches {C:/CPU/Testbenches/regfile32x64_tb.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module dff_async_reset_tb
+# -- Compiling module regfile32x64_tb
 # 
 # Top level modules:
-# 	dff_async_reset_tb
+# 	regfile32x64_tb
 # 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  dff_async_reset_tb
-# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps dff_async_reset_tb 
-# Loading work.dff_async_reset_tb
-# Loading work.dff_async_reset
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  regfile32x64_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps regfile32x64_tb 
+# Loading work.regfile32x64_tb
+# Loading work.regfile32x64
 # 
 # add wave *
 # view structure
@@ -35,17 +35,6 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# t= 0.0ns enable=1 data=0 reset=1 q=x
-# t= 0.0ns enable=0 data=1 reset=1 q=0
-# t= 0.0ns enable=1 data=1 reset=1 q=0
-# t= 0.0ns enable=1 data=0 reset=1 q=1
-# t= 0.0ns enable=0 data=0 reset=1 q=0
-# t= 0.0ns enable=0 data=1 reset=1 q=0
-# t= 0.0ns enable=1 data=1 reset=1 q=0
-# t= 0.1ns enable=0 data=1 reset=1 q=1
-# t= 0.1ns enable=0 data=0 reset=1 q=1
-# t= 0.1ns enable=0 data=0 reset=0 q=1
-# t= 0.1ns enable=0 data=0 reset=1 q=0
-# Break in Module dff_async_reset_tb at C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v line 35
-# Simulation Breakpoint: Break in Module dff_async_reset_tb at C:/CPU/Examples/D-Flip-Flop/dff_async_reset_tb.v line 35
+# Break in Module regfile32x64_tb at C:/CPU/Testbenches/regfile32x64_tb.v line 72
+# Simulation Breakpoint: Break in Module regfile32x64_tb at C:/CPU/Testbenches/regfile32x64_tb.v line 72
 # MACRO ./BabysFirstCPU_run_msim_rtl_verilog.do PAUSED at line 17
