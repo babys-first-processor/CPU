@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Fri Jan 25 12:01:33 2019
+Analysis & Synthesis Status : Successful - Fri Jan 25 19:42:51 2019
 Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : BabysFirstCPU
-Top-level Entity Name : regfile32x64
+Top-level Entity Name : tribuf
 Family : Cyclone III
-Total logic elements : 4,776
-    Total combinational functions : 2,728
-    Dedicated logic registers : 2,048
-Total registers : 2048
-Total pins : 209
+Total logic elements : 0
+    Total combinational functions : 0
+    Dedicated logic registers : 0
+Total registers : 0
+Total pins : 3
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

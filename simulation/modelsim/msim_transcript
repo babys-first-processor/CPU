@@ -10,24 +10,24 @@
 # ** Warning: Copied C:\altera\clean-13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
 #          Updated modelsim.ini.
 # 
-# vlog -vlog01compat -work work +incdir+C:/CPU {C:/CPU/regfile32x64.v}
+# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/Tri-State\ Buffer {C:/CPU/Examples/Tri-State Buffer/tribuf.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module regfile32x64
+# -- Compiling module tribuf
 # 
 # Top level modules:
-# 	regfile32x64
+# 	tribuf
 # 
-# vlog -vlog01compat -work work +incdir+C:/CPU/Testbenches {C:/CPU/Testbenches/regfile32x64_tb.v}
+# vlog -vlog01compat -work work +incdir+C:/CPU/Examples/Tri-State\ Buffer {C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v}
 # Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
-# -- Compiling module regfile32x64_tb
+# -- Compiling module tribuf_tb
 # 
 # Top level modules:
-# 	regfile32x64_tb
+# 	tribuf_tb
 # 
-# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  regfile32x64_tb
-# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps regfile32x64_tb 
-# Loading work.regfile32x64_tb
-# Loading work.regfile32x64
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc"  tribuf_tb
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps tribuf_tb 
+# Loading work.tribuf_tb
+# Loading work.tribuf
 # 
 # add wave *
 # view structure
@@ -35,6 +35,6 @@
 # view signals
 # .main_pane.objects.interior.cs.body.tree
 # run -all
-# Break in Module regfile32x64_tb at C:/CPU/Testbenches/regfile32x64_tb.v line 72
-# Simulation Breakpoint: Break in Module regfile32x64_tb at C:/CPU/Testbenches/regfile32x64_tb.v line 72
+# Break in Module tribuf_tb at C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v line 21
+# Simulation Breakpoint: Break in Module tribuf_tb at C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v line 21
 # MACRO ./BabysFirstCPU_run_msim_rtl_verilog.do PAUSED at line 17

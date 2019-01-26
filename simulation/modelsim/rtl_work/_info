@@ -3,43 +3,43 @@ K3
 13
 cModel Technology
 Z0 dC:\CPU\simulation\modelsim
-vregfile32x64
-I9Q:F0aeFGRCbY7M0J4oO00
-V1dPU[BcA_68FUakW:>=381
+vtribuf
+IacL5DiYMRUcnmNCTO<Ah;0
+V4_EnR_oH`L_BBm1RV59=M0
 Z1 dC:\CPU\simulation\modelsim
-w1548435201
-8C:/CPU/regfile32x64.v
-FC:/CPU/regfile32x64.v
+w1548463084
+8C:/CPU/Examples/Tri-State Buffer/tribuf.v
+FC:/CPU/Examples/Tri-State Buffer/tribuf.v
 L0 1
 Z2 OV;L;10.1d;51
 r1
 31
 Z3 o-vlog01compat -work work -O0
 !i10b 1
-!s100 FAE]d7^U=?EFG8YcF]V4P2
+!s100 XDm3j]N[8C0z1AoiWS5gb0
 !s85 0
-!s108 1548435704.039000
-!s107 C:/CPU/regfile32x64.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU|C:/CPU/regfile32x64.v|
+!s108 1548463380.845000
+!s107 C:/CPU/Examples/Tri-State Buffer/tribuf.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/Tri-State Buffer|C:/CPU/Examples/Tri-State Buffer/tribuf.v|
 !s101 -O0
-!s92 -vlog01compat -work work +incdir+C:/CPU -O0
-vregfile32x64_tb
+Z4 !s92 -vlog01compat -work work {+incdir+C:/CPU/Examples/Tri-State Buffer} -O0
+vtribuf_tb
 !i10b 1
-!s100 ;0QzU13gQPCRIg_f83N>D2
-IkP3d]zb:n1T7NZ61k60k00
-VzBd1d^YD?dH_H:W3b20BQ1
+!s100 B1cFcd1Y_8X`ECezNP21T1
+I:bZ0J2Xe2l`<YSXUfb`070
+VXL?Bh@U1_Tf^WOi=U1D`H3
 R1
-w1548435681
-8C:/CPU/Testbenches/regfile32x64_tb.v
-FC:/CPU/Testbenches/regfile32x64_tb.v
+w1548463315
+8C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v
+FC:/CPU/Examples/Tri-State Buffer/tribuf_tb.v
 L0 1
 R2
 r1
 !s85 0
 31
-!s108 1548435704.117000
-!s107 C:/CPU/Testbenches/regfile32x64_tb.v|
-!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Testbenches|C:/CPU/Testbenches/regfile32x64_tb.v|
+!s108 1548463380.918000
+!s107 C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Examples/Tri-State Buffer|C:/CPU/Examples/Tri-State Buffer/tribuf_tb.v|
 !s101 -O0
 R3
-!s92 -vlog01compat -work work +incdir+C:/CPU/Testbenches -O0
+R4
