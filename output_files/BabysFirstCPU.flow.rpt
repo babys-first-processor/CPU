@@ -1,5 +1,5 @@
 Flow report for BabysFirstCPU
-Fri Jan 25 19:42:51 2019
+Sat Jan 26 14:05:32 2019
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Jan 25 19:42:51 2019      ;
+; Flow Status                        ; Successful - Sat Jan 26 14:05:32 2019      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; BabysFirstCPU                              ;
-; Top-level Entity Name              ; tribuf                                     ;
+; Top-level Entity Name              ; CLA_adder64bit                             ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C16F484C6                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 0                                          ;
-;     Total combinational functions  ; 0                                          ;
+; Total logic elements               ; 262                                        ;
+;     Total combinational functions  ; 262                                        ;
 ;     Dedicated logic registers      ; 0                                          ;
 ; Total registers                    ; 0                                          ;
-; Total pins                         ; 3                                          ;
+; Total pins                         ; 193                                        ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -64,66 +64,74 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 01/25/2019 19:42:51 ;
+; Start date & time ; 01/26/2019 14:05:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; BabysFirstCPU       ;
 +-------------------+---------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                                       ;
-+--------------------------------------+----------------------------------------------+---------------+-------------+--------------------+
-; Assignment Name                      ; Value                                        ; Default Value ; Entity Name ; Section Id         ;
-+--------------------------------------+----------------------------------------------+---------------+-------------+--------------------+
-; COMPILER_SIGNATURE_ID                ; 93328251188449.154846337106568               ; --            ; --          ; --                 ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; Mux_4to1_tb        ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; decoder_2to4_tb    ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; decoder_3to8_tb    ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; dff_async_reset_tb ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; regfile4x16_tb     ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; regfile32x64_tb    ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; addsub_tb          ;
-; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --          ; tribuf_tb          ;
-; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; tribuf_tb                                    ; --            ; --          ; eda_simulation     ;
-; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                  ; --            ; --          ; eda_simulation     ;
-; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)                    ; <None>        ; --          ; --                 ;
-; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                              ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_FILE                  ; Examples/4-to-1-Mux/Mux_4to1_tb.v            ; --            ; --          ; Mux_4to1_tb        ;
-; EDA_TEST_BENCH_FILE                  ; Examples/2-to-4-Decoder/decoder_2to4_tb.v    ; --            ; --          ; decoder_2to4_tb    ;
-; EDA_TEST_BENCH_FILE                  ; Examples/3-to-8 Decoder/decoder_3to8_tb.v    ; --            ; --          ; decoder_3to8_tb    ;
-; EDA_TEST_BENCH_FILE                  ; Examples/D-Flip-Flop/dff_async_reset_tb.v    ; --            ; --          ; dff_async_reset_tb ;
-; EDA_TEST_BENCH_FILE                  ; Examples/4x16-Register-File/regfile4x16_tb.v ; --            ; --          ; regfile4x16_tb     ;
-; EDA_TEST_BENCH_FILE                  ; Testbenches/regfile32x64_tb.v                ; --            ; --          ; regfile32x64_tb    ;
-; EDA_TEST_BENCH_FILE                  ; Examples/Adder-Subtractor/addsub_tb.v        ; --            ; --          ; addsub_tb          ;
-; EDA_TEST_BENCH_FILE                  ; Examples/Tri-State Buffer/tribuf_tb.v        ; --            ; --          ; tribuf_tb          ;
-; EDA_TEST_BENCH_MODULE_NAME           ; Mux_4to1_tb                                  ; --            ; --          ; Mux_4to1_tb        ;
-; EDA_TEST_BENCH_MODULE_NAME           ; decoder_2to4_tb                              ; --            ; --          ; decoder_2to4_tb    ;
-; EDA_TEST_BENCH_MODULE_NAME           ; decoder_3to8_tb                              ; --            ; --          ; decoder_3to8_tb    ;
-; EDA_TEST_BENCH_MODULE_NAME           ; dff_async_reset_tb                           ; --            ; --          ; dff_async_reset_tb ;
-; EDA_TEST_BENCH_MODULE_NAME           ; regfile4x16_tb                               ; --            ; --          ; regfile4x16_tb     ;
-; EDA_TEST_BENCH_MODULE_NAME           ; regfile32x64_tb                              ; --            ; --          ; regfile32x64_tb    ;
-; EDA_TEST_BENCH_MODULE_NAME           ; addsub_tb                                    ; --            ; --          ; addsub_tb          ;
-; EDA_TEST_BENCH_MODULE_NAME           ; tribuf_tb                                    ; --            ; --          ; tribuf_tb          ;
-; EDA_TEST_BENCH_NAME                  ; Mux_4to1_tb                                  ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; decoder_2to4_tb                              ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; decoder_3to8_tb                              ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; dff_async_reset_tb                           ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; regfile4x16_tb                               ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; regfile32x64_tb                              ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; addsub_tb                                    ; --            ; --          ; eda_simulation     ;
-; EDA_TEST_BENCH_NAME                  ; tribuf_tb                                    ; --            ; --          ; eda_simulation     ;
-; EDA_TIME_SCALE                       ; 1 ps                                         ; --            ; --          ; eda_simulation     ;
-; MAX_CORE_JUNCTION_TEMP               ; 85                                           ; --            ; --          ; --                 ;
-; MIN_CORE_JUNCTION_TEMP               ; 0                                            ; --            ; --          ; --                 ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                         ; --            ; --          ; --                 ;
-; PARTITION_COLOR                      ; 16764057                                     ; --            ; tribuf      ; Top                ;
-; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                        ; --            ; tribuf      ; Top                ;
-; PARTITION_NETLIST_TYPE               ; SOURCE                                       ; --            ; tribuf      ; Top                ;
-; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                          ; --            ; --          ; --                 ;
-; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW        ; --            ; --          ; --                 ;
-; PROJECT_OUTPUT_DIRECTORY             ; output_files                                 ; --            ; --          ; --                 ;
-; TOP_LEVEL_ENTITY                     ; tribuf                                       ; BabysFirstCPU ; --          ; --                 ;
-+--------------------------------------+----------------------------------------------+---------------+-------------+--------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                          ;
++--------------------------------------+----------------------------------------------+---------------+----------------+--------------------+
+; Assignment Name                      ; Value                                        ; Default Value ; Entity Name    ; Section Id         ;
++--------------------------------------+----------------------------------------------+---------------+----------------+--------------------+
+; COMPILER_SIGNATURE_ID                ; 93328251188449.154852953004344               ; --            ; --             ; --                 ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; Mux_4to1_tb        ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; decoder_2to4_tb    ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; decoder_3to8_tb    ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; dff_async_reset_tb ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; regfile4x16_tb     ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; regfile32x64_tb    ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; addsub_tb          ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; tribuf_tb          ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; CLA_adder4bit_tb   ;
+; EDA_DESIGN_INSTANCE_NAME             ; NA                                           ; --            ; --             ; CLA_adder64bit_tb  ;
+; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; CLA_adder64bit_tb                            ; --            ; --             ; eda_simulation     ;
+; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                  ; --            ; --             ; eda_simulation     ;
+; EDA_SIMULATION_TOOL                  ; ModelSim-Altera (Verilog)                    ; <None>        ; --             ; --                 ;
+; EDA_TEST_BENCH_ENABLE_STATUS         ; TEST_BENCH_MODE                              ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_FILE                  ; Examples/4-to-1-Mux/Mux_4to1_tb.v            ; --            ; --             ; Mux_4to1_tb        ;
+; EDA_TEST_BENCH_FILE                  ; Examples/2-to-4-Decoder/decoder_2to4_tb.v    ; --            ; --             ; decoder_2to4_tb    ;
+; EDA_TEST_BENCH_FILE                  ; Examples/3-to-8 Decoder/decoder_3to8_tb.v    ; --            ; --             ; decoder_3to8_tb    ;
+; EDA_TEST_BENCH_FILE                  ; Examples/D-Flip-Flop/dff_async_reset_tb.v    ; --            ; --             ; dff_async_reset_tb ;
+; EDA_TEST_BENCH_FILE                  ; Examples/4x16-Register-File/regfile4x16_tb.v ; --            ; --             ; regfile4x16_tb     ;
+; EDA_TEST_BENCH_FILE                  ; Testbenches/regfile32x64_tb.v                ; --            ; --             ; regfile32x64_tb    ;
+; EDA_TEST_BENCH_FILE                  ; Examples/Adder-Subtractor/addsub_tb.v        ; --            ; --             ; addsub_tb          ;
+; EDA_TEST_BENCH_FILE                  ; Examples/Tri-State Buffer/tribuf_tb.v        ; --            ; --             ; tribuf_tb          ;
+; EDA_TEST_BENCH_FILE                  ; Testbenches/CLA_adder4bit_tb.v               ; --            ; --             ; CLA_adder4bit_tb   ;
+; EDA_TEST_BENCH_FILE                  ; Testbenches/CLA_adder64bit_tb.v              ; --            ; --             ; CLA_adder64bit_tb  ;
+; EDA_TEST_BENCH_MODULE_NAME           ; Mux_4to1_tb                                  ; --            ; --             ; Mux_4to1_tb        ;
+; EDA_TEST_BENCH_MODULE_NAME           ; decoder_2to4_tb                              ; --            ; --             ; decoder_2to4_tb    ;
+; EDA_TEST_BENCH_MODULE_NAME           ; decoder_3to8_tb                              ; --            ; --             ; decoder_3to8_tb    ;
+; EDA_TEST_BENCH_MODULE_NAME           ; dff_async_reset_tb                           ; --            ; --             ; dff_async_reset_tb ;
+; EDA_TEST_BENCH_MODULE_NAME           ; regfile4x16_tb                               ; --            ; --             ; regfile4x16_tb     ;
+; EDA_TEST_BENCH_MODULE_NAME           ; regfile32x64_tb                              ; --            ; --             ; regfile32x64_tb    ;
+; EDA_TEST_BENCH_MODULE_NAME           ; addsub_tb                                    ; --            ; --             ; addsub_tb          ;
+; EDA_TEST_BENCH_MODULE_NAME           ; tribuf_tb                                    ; --            ; --             ; tribuf_tb          ;
+; EDA_TEST_BENCH_MODULE_NAME           ; CLA_adder4bit_tb                             ; --            ; --             ; CLA_adder4bit_tb   ;
+; EDA_TEST_BENCH_MODULE_NAME           ; CLA_adder64bit_tb                            ; --            ; --             ; CLA_adder64bit_tb  ;
+; EDA_TEST_BENCH_NAME                  ; Mux_4to1_tb                                  ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; decoder_2to4_tb                              ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; decoder_3to8_tb                              ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; dff_async_reset_tb                           ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; regfile4x16_tb                               ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; regfile32x64_tb                              ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; addsub_tb                                    ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; tribuf_tb                                    ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; CLA_adder4bit_tb                             ; --            ; --             ; eda_simulation     ;
+; EDA_TEST_BENCH_NAME                  ; CLA_adder64bit_tb                            ; --            ; --             ; eda_simulation     ;
+; EDA_TIME_SCALE                       ; 1 ps                                         ; --            ; --             ; eda_simulation     ;
+; MAX_CORE_JUNCTION_TEMP               ; 85                                           ; --            ; --             ; --                 ;
+; MIN_CORE_JUNCTION_TEMP               ; 0                                            ; --            ; --             ; --                 ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE          ; 1.2V                                         ; --            ; --             ; --                 ;
+; PARTITION_COLOR                      ; 16764057                                     ; --            ; CLA_adder64bit ; Top                ;
+; PARTITION_FITTER_PRESERVATION_LEVEL  ; PLACEMENT_AND_ROUTING                        ; --            ; CLA_adder64bit ; Top                ;
+; PARTITION_NETLIST_TYPE               ; SOURCE                                       ; --            ; CLA_adder64bit ; Top                ;
+; POWER_BOARD_THERMAL_MODEL            ; None (CONSERVATIVE)                          ; --            ; --             ; --                 ;
+; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW        ; --            ; --             ; --                 ;
+; PROJECT_OUTPUT_DIRECTORY             ; output_files                                 ; --            ; --             ; --                 ;
+; TOP_LEVEL_ENTITY                     ; CLA_adder64bit                               ; BabysFirstCPU ; --             ; --                 ;
++--------------------------------------+----------------------------------------------+---------------+----------------+--------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -131,8 +139,8 @@ applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:01     ; 1.0                     ; 4632 MB             ; 00:00:01                           ;
-; Total                ; 00:00:01     ; --                      ; --                  ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:02     ; 1.0                     ; 4631 MB             ; 00:00:01                           ;
+; Total                ; 00:00:02     ; --                      ; --                  ; 00:00:01                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
