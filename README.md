@@ -2,10 +2,13 @@
 64-bit ARM processor for Computer Architecture course at Rowan University.
 ## Git
 To set up git on your Windows machine, use [Git For Windows](https://git-scm.com/download/win) and follow the install instructions. 
-Change to the branch with your name on it `git checkout [name]` and make your chnages to the project.
-You should periodically save your work on your local machine. Use `git add [file]` to stage your files for commit, or alternatively, use the wildcard (`*`) to add all files in the directory. Then use `git commit -a` to commit all of these changes. A text editor will appear for you to write a commit message, where you should briefly describe the changes made. The message should be in the imperative mood, so instead of writing "changed x to do y", you should write "change x to do y" or "add y functionality to x", etc. You could also use `git commit -am "[Message]` to skip the editor and directly type your commit message.
 
-To upload your local changes to the remote repository, you should merge your branch with the master branch with `git checkout master` and `git merge [name]`. If there are conflicts with your file, you will have to resolve them before the merge is completed. You can also open a pull request through GitHub, where there is a helpful tool for resolving conflicts manually.
+Clone the remote repository onto your computer with `git clone https://github.com/babys-first-processor/CPU.git`. 
+You should periodically save your work on your local machine. Use `git add [file]` to stage your files for commit, or alternatively, use (`.`) to add all changed files in the directory. Then use `git commit -a` to commit all of these changes. A text editor will appear for you to write a commit message, where you should briefly describe the changes made. The message should be in the imperative mood, so instead of writing "changed x to do y", you should write "change x to do y" or "add y functionality to x", etc. You could also use `git commit -am "[Message]` to skip the editor and directly type your commit message.
+
+To upload your local changes to the remote repository, you should use `git push origin master` 
+
+We may also try to use branches if I ever figure them out.
 ### Trello
 The Trello board for the SCRUM workflow can be found [here](https://trello.com/b/3fFOV1tK/2-babys-first-processor).
 ### Slack
