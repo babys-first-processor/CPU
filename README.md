@@ -8,7 +8,7 @@ You should periodically save your work on your local machine. Use `git add [file
 
 To upload your local changes to the remote repository, you should use `git push origin master` 
 
-We may also try to use branches if I ever figure them out.
+Using branches, you can create a pull request through github, or resolve merge conflicts manually and merge from CLI. 
 ### Trello
 The Trello board for the SCRUM workflow can be found [here](https://trello.com/b/3fFOV1tK/2-babys-first-processor).
 ### Slack
