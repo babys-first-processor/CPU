@@ -57,10 +57,10 @@
 # 
 #           File in use by: Ryan  Hostname: LAPTOP-TIF878N2  ProcessID: 4660
 # 
-#           Attempting to use alternate WLF file "./wlfty697i3".
+#           Attempting to use alternate WLF file "./wlft9gjbj8".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
 # 
-#           Using alternate file: ./wlfty697i3
+#           Using alternate file: ./wlft9gjbj8
 # 
 # view structure
 # .main_pane.structure.interior.cs.body.struct

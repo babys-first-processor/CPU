@@ -20,7 +20,7 @@ n@c@l@a_adder4bit
 !i10b 1
 !s100 TD[fKD_D3P8HL8d_L;G@Z1
 !s85 0
-!s108 1548529574.932000
+!s108 1548542909.986000
 !s107 C:/CPU/CLA_adder4bit.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU|C:/CPU/CLA_adder4bit.v|
 !s101 -O0
@@ -41,17 +41,17 @@ n@c@l@a_adder64bit
 !i10b 1
 !s100 lHDUl4Z`^mV0=3If7cnZe1
 !s85 0
-!s108 1548529574.995000
+!s108 1548542910.080000
 !s107 C:/CPU/CLA_adder64bit.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU|C:/CPU/CLA_adder64bit.v|
 !s101 -O0
 vCLA_adder64bit_tb
 !i10b 1
-!s100 emY21aGG`_9Ra6V=26NMj2
-IU:LfCLm0P7niLn`c9SgP>1
+!s100 Y9kk_9^YzH5oXQ@K_04iH0
+IeO?`VXJbo@TR=kcjbC1BA0
 VY?WY8nWRi>a633<;NcZWb1
 R1
-w1548529130
+w1548542896
 8C:/CPU/Testbenches/CLA_adder64bit_tb.v
 FC:/CPU/Testbenches/CLA_adder64bit_tb.v
 L0 1
@@ -59,7 +59,7 @@ R2
 r1
 !s85 0
 31
-!s108 1548529575.069000
+!s108 1548542910.149000
 !s107 C:/CPU/Testbenches/CLA_adder64bit_tb.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU/Testbenches|C:/CPU/Testbenches/CLA_adder64bit_tb.v|
 !s101 -O0
@@ -83,7 +83,7 @@ R4
 !i10b 1
 !s100 9CTLjhDRJ<EDHKG:DaiJo0
 !s85 0
-!s108 1548529574.854000
+!s108 1548542909.917000
 !s107 C:/CPU/CLA_logic.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/CPU|C:/CPU/CLA_logic.v|
 !s101 -O0
