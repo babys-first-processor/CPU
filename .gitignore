@@ -1,2 +1,5 @@
-#ignore backup files
-*.bak
+#ignore quartus files / only include .v files
+*
+!*.v
+!*/Examples
+
