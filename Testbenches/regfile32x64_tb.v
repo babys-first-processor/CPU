@@ -30,7 +30,7 @@ initial begin
 	
 	wrAddr = 32'h00; //register 0
 	#100;
-	wrData = 64'hFFFFFFFFFFFFFFFF; //all ones
+	wrData = 64'hFFFAFFFFFFFFFFFF; //all ones
 	#100;
 	
 	write = 1'b0;
