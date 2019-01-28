@@ -4,6 +4,7 @@ simulation/
 .qsys_edit/
 output_files
 *.qsf
+*.qpf
 *.bak
 *.rpt
 *.swp
