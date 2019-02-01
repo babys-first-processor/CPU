@@ -19,6 +19,7 @@ module ALU_LEGv8(A, B, FS, C0, F, status);
 	wire Z, N, C, V;
 	assign status = {V, C, N, Z};
 	
+	
 	wire [63:0] A_Signal, B_Signal;
 	// A Mux
 	assign A_Signal = FS[1] ? ~A : A;
@@ -32,22 +33,23 @@ module ALU_LEGv8(A, B, FS, C0, F, status);
 	assign V = ~(A_Signal[63] ^ B_Signal[63]) &  (F[63] ^ A_Signal[63]);
 	
 	wire [63:0]and_output, or_output, xor_output, add_output, shift_left, shift_right;
-	assign and_output = A_Signal && B_Signal;
-	assign or_output = A_Signal || B_Signal;
+	assign and_output = A_Signal & B_Signal;
+	assign or_output = A_Signal | B_Signal;
 	assign xor_output = A_Signal ^ B_Signal;
-	Adder adder_inst (A_Signal, B_Signal, C0, add_output, C);
+	Adder adder_inst (add_output, C, A_Signal, B_Signal, C0);
 	Shifter shift_inst (shift_left, shift_right, A, B[5:0]);
 	
-	Mux8to1Nbit main_mux (F, FS[4:2], and_output, or_output, add_output, xor_output, shift_left, shift_right, 64'b0, 64'b0);
+	Mux8to1Nbit #(64) main_mux (F, FS[4:2], 64'b0, 64'b0, shift_right, shift_left, xor_output, add_output, or_output, and_output);
 endmodule
 
 module Shifter(left, right, A, shift_amount);
 	input [63:0] A;
 	input [5:0] shift_amount;
 	output reg [63:0] left, right;
-	
-	left = A << shift_amount;
-	right = A >> shift_amount;
+	always @* begin
+		left = A << shift_amount;
+		right = A >> shift_amount;
+	end
 endmodule
 
 module Adder(S, Cout, A, B, Cin);
@@ -78,5 +80,5 @@ module FullAdder(S, Cout, A, B, Cin);
 	output S, Cout;
 	
 	assign S = A ^ B ^ Cin;
-	assign Cout = A&B + A&Cin + B&Cin;
+	assign Cout = A&B | A&Cin | B&Cin;
 endmodule

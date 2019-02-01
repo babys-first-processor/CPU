@@ -1,4 +1,4 @@
-module ALU_LEGv8_Testbench();
+module ALU_LEGv8_Testbench;
 	reg [63:0] A, B;
 	reg [4:0] FS;
 	reg C0;
@@ -29,7 +29,7 @@ module ALU_LEGv8_Testbench();
 		A <= 64'b1; // shift 1 a random number of times
 		#5 FS <= 5'b10100; // shift right
 		A <= 64'h8000000000000000;*/
-		#5000 $display("total errors: %d" errors);
+		#5000; $display("total errors: %d", errors);
 		$stop;
 	end
 	
