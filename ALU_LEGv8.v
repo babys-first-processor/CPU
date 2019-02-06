@@ -17,7 +17,7 @@ module ALU_LEGv8(A, B, FS, C0, F, status);
 	output [3:0]status;
 	
 	wire Z, N, C, V;
-	assign status = {V, C, N, Z};
+	assign status = {V, C, N, Z}; //overflow, carry, negative, zero
 	
 	
 	wire [63:0] A_Signal, B_Signal;
@@ -36,7 +36,7 @@ module ALU_LEGv8(A, B, FS, C0, F, status);
 	assign and_output = A_Signal & B_Signal;
 	assign or_output = A_Signal | B_Signal;
 	assign xor_output = A_Signal ^ B_Signal;
-	Adder adder_inst (add_output, C, A_Signal, B_Signal, C0);
+	CLA_adder64bit adder_inst (C0, A_Signal, B_Signal, add_output, C);
 	Shifter shift_inst (shift_left, shift_right, A, B[5:0]);
 	
 	Mux8to1Nbit #(64) main_mux (F, FS[4:2], 64'b0, 64'b0, shift_right, shift_left, xor_output, add_output, or_output, and_output);
@@ -52,6 +52,7 @@ module Shifter(left, right, A, shift_amount);
 	end
 endmodule
 
+/*
 module Adder(S, Cout, A, B, Cin);
 	input [63:0] A, B;
 	input Cin;
@@ -82,3 +83,4 @@ module FullAdder(S, Cout, A, B, Cin);
 	assign S = A ^ B ^ Cin;
 	assign Cout = A&B | A&Cin | B&Cin;
 endmodule
+*/

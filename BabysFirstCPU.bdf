@@ -1,0 +1,142 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+*/
+(header "graphic" (version "1.4"))
+(symbol
+	(rect 312 240 536 416)
+	(text "regfile32x64" (rect 5 0 65 12)(font "Arial" ))
+	(text "inst" (rect 8 160 25 172)(font "Arial" ))
+	(port
+		(pt 0 144)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 139 35 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144))
+	)
+	(port
+		(pt 0 56)
+		(input)
+		(text "write" (rect 0 0 22 12)(font "Arial" ))
+		(text "write" (rect 21 51 43 63)(font "Arial" ))
+		(line (pt 0 56)(pt 16 56))
+	)
+	(port
+		(pt 112 176)
+		(input)
+		(text "reset" (rect 0 0 24 12)(font "Arial" ))
+		(text "reset" (rect 104 127 116 151)(font "Arial" )(vertical))
+		(line (pt 112 160)(pt 112 176))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "wrAddr[4..0]" (rect 0 0 59 12)(font "Arial" ))
+		(text "wrAddr[4..0]" (rect 25 72 84 84)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 104)
+		(input)
+		(text "wrData[63..0]" (rect 0 0 66 12)(font "Arial" ))
+		(text "wrData[63..0]" (rect 21 99 87 111)(font "Arial" ))
+		(line (pt 0 104)(pt 16 104)(line_width 3))
+	)
+	(port
+		(pt 96 0)
+		(input)
+		(text "rdAddrA[4..0]" (rect 0 0 64 12)(font "Arial" ))
+		(text "rdAddrA[4..0]" (rect 88 25 100 89)(font "Arial" )(vertical))
+		(line (pt 96 0)(pt 96 16)(line_width 3))
+	)
+	(port
+		(pt 120 0)
+		(input)
+		(text "rdAddrB[4..0]" (rect 0 0 64 12)(font "Arial" ))
+		(text "rdAddrB[4..0]" (rect 112 25 124 89)(font "Arial" )(vertical))
+		(line (pt 120 0)(pt 120 16)(line_width 3))
+	)
+	(port
+		(pt 224 64)
+		(output)
+		(text "rdDataA[63..0]" (rect 0 0 71 12)(font "Arial" ))
+		(text "rdDataA[63..0]" (rect 143 59 214 71)(font "Arial" ))
+		(line (pt 224 64)(pt 208 64)(line_width 3))
+	)
+	(port
+		(pt 224 96)
+		(output)
+		(text "rdDataB[63..0]" (rect 0 0 71 12)(font "Arial" ))
+		(text "rdDataB[63..0]" (rect 143 91 214 103)(font "Arial" ))
+		(line (pt 224 96)(pt 208 96)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 208 160))
+	)
+)
+(symbol
+	(rect 680 272 856 384)
+	(text "ALU_LEGv8" (rect 5 0 66 12)(font "Arial" ))
+	(text "inst1" (rect 8 96 31 108)(font "Arial" ))
+	(port
+		(pt 0 40)
+		(input)
+		(text "A[63..0]" (rect 0 0 38 12)(font "Arial" ))
+		(text "A[63..0]" (rect 21 35 59 47)(font "Arial" ))
+		(line (pt 0 40)(pt 16 40)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "B[63..0]" (rect 0 0 38 12)(font "Arial" ))
+		(text "B[63..0]" (rect 21 59 59 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 88 0)
+		(input)
+		(text "FS[4..0]" (rect 0 0 40 12)(font "Arial" ))
+		(text "FS[4..0]" (rect 80 25 92 65)(font "Arial" )(vertical))
+		(line (pt 88 0)(pt 88 16)(line_width 3))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "C0" (rect 0 0 14 12)(font "Arial" ))
+		(text "C0" (rect 21 83 35 95)(font "Arial" ))
+		(line (pt 0 88)(pt 16 88))
+	)
+	(port
+		(pt 176 48)
+		(output)
+		(text "F[63..0]" (rect 0 0 38 12)(font "Arial" ))
+		(text "F[63..0]" (rect 123 43 161 55)(font "Arial" ))
+		(line (pt 176 48)(pt 160 48)(line_width 3))
+	)
+	(port
+		(pt 176 80)
+		(output)
+		(text "status[3..0]" (rect 0 0 56 12)(font "Arial" ))
+		(text "status[3..0]" (rect 108 75 164 87)(font "Arial" ))
+		(line (pt 176 80)(pt 160 80)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 160 96))
+	)
+)

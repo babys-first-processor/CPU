@@ -18,52 +18,49 @@ initial begin
 	write = 1'b0;
 	wrAddr = 5'b0;
 	wrData = 64'b0;
-	#100;
+	#10;
 	reset = 1'b0;
-	#100;
+	write = 1'b1;
 	wrAddr = 5'b00000;
-	#100;
 	wrData = 64'hFFFFFFFFFFFFFFFF;
-	#100;
+	#20;
 	
 	write = 1'b0;
-	#100;
+	#5;
 	write = 1'b1;
-	#100;
+	#5;
 	wrAddr = 5'b00001;
-	#100;
 	wrData = 64'hAAAAAAAAAAAAAAAA;
-	#100;
-	
+	#20;
+	/*
 	write = 1'b0;
-	#100;
+	#10;
 	write = 1'b1;
-	#100;
+	#10;
 	wrAddr = 5'b00010;
-	#100;
+	#20;
 	wrData = 64'hCCCCCCCCCCCCCCCC;
-	#100;
+	#20;
 	
 	write = 1'b0;
-	#100;
+	#10;
 	write = 1'b1;
-	#100;
+	#10;
 	wrAddr = 5'b00011;
-	#100;
+	#20;
 	wrData = 64'hF0F0F0F0F0F0F0F0;
-	#100;
-	
+	#10;
+	*/
 	write = 1'b0;
-	#100;
 	rdAddrA = 5'b00000;
 	rdAddrB = 5'b00001;
-	#100;
-	rdAddrA = 5'b00010;
-	rdAddrB = 5'b00011;
-	#100;
+	#10;
+	//rdAddrA = 5'b00010;
+	//rdAddrB = 5'b00011;
+	//#10;
 	reset = 1'b1;
 	rdAddrA = 5'b0;
 	rdAddrB = 5'b00001;
-	#100; $stop;
+	#10; $stop;
 end
 endmodule

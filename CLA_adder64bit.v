@@ -1,13 +1,14 @@
 module CLA_adder64bit(
+	input Cin,
 	input [63:0] A, B, 
 	output [63:0] S,
-	output CF);
+	output Cout);
 
 wire [15:0] Carry;
 
 //create 4 bit adders (64 bits required, 64/4 = 16 modules required
 CLA_adder4bit nibble0
-(.Cin(1'b0),     .A(A[3:0]),   .B(B[3:0]),   .S(S[3:0]),    .Cout(Carry[0]));
+(.Cin(Cin),     .A(A[3:0]),   .B(B[3:0]),   .S(S[3:0]),    .Cout(Carry[0]));
 CLA_adder4bit nibble1
 (.Cin(Carry[0]), .A(A[7:4]),   .B(B[7:4]),   .S(S[7:4]),    .Cout(Carry[1]));
 CLA_adder4bit nibble2
@@ -25,7 +26,7 @@ CLA_adder4bit nibble7
 CLA_adder4bit nibble8
 (.Cin(Carry[7]), .A(A[35:32]), .B(B[35:32]), .S(S[35:32]), .Cout(Carry[8]));
 CLA_adder4bit nibble9
-(.Cin(Carry[8]), .A(A[40:36]), .B(B[40:36]), .S(S[40:36]), .Cout(Carry[9]));
+(.Cin(Carry[8]), .A(A[39:36]), .B(B[39:36]), .S(S[39:36]), .Cout(Carry[9]));
 CLA_adder4bit nibble10
 (.Cin(Carry[9]), .A(A[43:40]), .B(B[43:40]), .S(S[43:40]), .Cout(Carry[10]));
 CLA_adder4bit nibble11
@@ -39,6 +40,6 @@ CLA_adder4bit nibble14
 CLA_adder4bit nibble15
 (.Cin(Carry[14]),.A(A[63:60]), .B(B[63:60]), .S(S[63:60]), .Cout(Carry[15]));
 					
-assign CF = Carry[15];
+assign Cout = Carry[15];
 endmodule
 				

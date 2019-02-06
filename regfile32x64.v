@@ -9,7 +9,7 @@ module regfile32x64(
    input [4:0] rdAddrB,
    output [63:0] rdDataB);
 
-
+/*
 wire [31:0] m; //decoder output
 wire [63:0] Q0, Q1, Q2, Q3, Q4, Q5, Q6, Q7,
 				Q8, Q9, Q10,Q11,Q12,Q13,Q14,Q15,
@@ -63,11 +63,11 @@ RegisterNbit #(64) reg29(.Q(Q29),.D(wrData), .L(m[29] & write), .R(reset), .cloc
 RegisterNbit #(64) reg30(.Q(Q30),.D(wrData), .L(m[30] & write), .R(reset), .clock(clk));
 RegisterNbit #(64) reg31(.Q(Q31),.D(wrData), .L(m[31] & write), .R(reset), .clock(clk));
 						 //address is from 5'h00 to 5'h1F
-	
+*/
 
 
 //behavorial
-/*					 
+				 
 reg [63:0] reg0, reg1,  reg2, reg3, reg4, reg5, reg6, reg7, 
 			  reg8, reg9, reg10,reg11,reg12,reg13,reg14,reg15,
 			  reg16,reg17,reg18,reg19,reg20,reg21,reg22,reg23,
@@ -248,5 +248,5 @@ always @(posedge clk or posedge reset)
 			end
 		endcase
 	end
-*/
+
 endmodule
