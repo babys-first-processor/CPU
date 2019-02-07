@@ -4,6 +4,7 @@ module CLA_adder64bit(
 	output [63:0] S,
 	output Cout);
 
+
 wire [15:0] Carry;
 
 //create 4 bit adders (64 bits required, 64/4 = 16 modules required
@@ -41,5 +42,15 @@ CLA_adder4bit nibble15
 (.Cin(Carry[14]),.A(A[63:60]), .B(B[63:60]), .S(S[63:60]), .Cout(Carry[15]));
 					
 assign Cout = Carry[15];
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// WIP - Using multiple levels of CLA logic instead of cascading 4-bit adders
+//
+/////////////////////////////////////////////////////////////////////////////
+
+
 endmodule
 				

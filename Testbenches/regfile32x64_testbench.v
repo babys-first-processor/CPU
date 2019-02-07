@@ -1,4 +1,4 @@
-module regfile32x64_tb;
+module regfile32x64_testbench;
 	// create registers for holding the simulated input values to the DUT
 	reg [4:0]SA, SB, DA;
 	reg [63:0]D;

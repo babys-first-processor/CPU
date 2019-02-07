@@ -20,12 +20,11 @@ initial begin
 	wrData = 64'b0;
 	#10;
 	reset = 1'b0;
-	write = 1'b1;
+	rdAddrA = 5'b0;
 	wrAddr = 5'b00000;
 	wrData = 64'hFFFFFFFFFFFFFFFF;
 	#20;
 	
-	write = 1'b0;
 	#5;
 	write = 1'b1;
 	#5;

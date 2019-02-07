@@ -16,6 +16,7 @@ initial begin
 	#100;
 	reset = 1'b0;
 	#100;
+	rdAddrA = 3'b000;
 	wrAddr = 3'b000;
 	#100;
 	wrData = 16'hFFFF;
