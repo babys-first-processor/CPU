@@ -23,11 +23,11 @@ wire [63:0] A, B, F, D, ADDR, B_out; //regfile A and B outputs, ALU output, Data
 //instantiate submodules
 regfile32x64 regfile(.rdDataA(A), .rdDataB(B), .rdAddrA(SA), .rdAddrB(SB), .wrData(D), .wrAddr(DA), .write(W), .reset(rst), .clk(clk), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7));
 ALU_LEGv8 alu(.A(A), .B(B_out), .FS(FS), .C0(C0), .F(F), .status(Status));
-ram_sp_sr_sw ram(.clk(clk), .address(ADDR[31:0]), .data(D), .cs(CS), .we(WE),	.oe(OE));
+ram_sp_sr_sw ram(.clk(clk), .address(ADDR[11:0]), .data(D), .cs(CS), .we(WE),	.oe(OE));
 
 //set size of ram
 defparam ram.DATA_WIDTH = 64;
-defparam ram.ADDR_WIDTH = 32;
+defparam ram.ADDR_WIDTH = 12;
 
 //instantiate unnamed (see: simple) components
 Mux2to1 const_sel(.F(B_out), .A(K), .B(B), .Sel(K_SEL)); //A is constant, B is output from reg file

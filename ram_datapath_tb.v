@@ -6,10 +6,10 @@ reg [63:0] K, UNKNOWN;
 wire [3:0] Status;
 wire [63:0] r0, r1, r2, r3, r4, r5, r6, r7, PC_in;
 wire [63:0] mem0, mem1, D_debug;
-wire [31:0] addr_debug;
+wire [11:0] addr_debug;
 
-assign mem0 = dut.ram.mem[32'h0000_FFFF];
-assign mem1 = dut.ram.mem[32'hFFFF_0000];
+assign mem0 = dut.ram.mem[12'h00F];
+assign mem1 = dut.ram.mem[12'h0F0];
 assign addr_debug = dut.ADDR;
 assign D_debug = dut.D;
 
@@ -31,7 +31,7 @@ initial begin
 	
 	//begin loading values into regfile from K
 	// ADDI X0, X31, K
-	K <= 64'h0000_FFFF_0000_F000;
+	K <= 64'h0000_FFFF_0000_000F;
 	UNKNOWN <= 64'hx;
 	K_SEL <= 1'b1;
 	PC_SEL <= 1'b0;
@@ -50,7 +50,7 @@ initial begin
 	//cont
 	// ADDI X1, X31, K
 	#10;
-	K <= 64'hFFFF_0000_F000_0000;
+	K <= 64'hFFFF_0000_0000_00F0;
 	UNKNOWN <= 64'hx;
 	K_SEL <= 1'b1;
 	PC_SEL <= 1'b0;
