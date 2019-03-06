@@ -4,10 +4,11 @@ reg W, clk, rst, EN_ALU, EN_B, K_SEL, C0;
 reg [4:0] SA, SB, DA, FS;
 reg [63:0] K;
 wire [3:0] Status;
-wire [63:0] r0, r1, r2, r3, r4, r5, r6, r7;
+wire [63:0] r0, r1, r2, r3, r4, r5, r6, r7, Mux_out;
 
 regfile_and_alu_datapath dut(.W(W), .clk(clk), .rst(rst), .EN_ALU(EN_ALU), .EN_B(EN_B), .K_SEL(K_SEL), .C0(C0), .SA(SA), .SB(SB), .DA(DA), .FS(FS), .K(K), .Status(Status), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7));
 
+assign Mux_out = dut.Mux_out;
 always begin
 	#5 clk = ~clk;
 end

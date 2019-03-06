@@ -1,18 +1,18 @@
 module ram_datapath_tb;
 
-reg W, clk, rst, EN_ALU, EN_B, EN_ADDR, K_SEL, PC_SEL, C0, CS, WE, OE;
+reg W, clk, rst, EN_ALU, EN_B, EN_ADDR, K_SEL, PC_SEL, C0, WE, OE;
 reg [4:0] SA, SB, DA, FS;
 reg [63:0] K, CU;
 wire [3:0] Status;
 wire [63:0] r0, r1, r2, r3, r4, r5, r6, r7, PC_in;
 wire [63:0] mem0, mem1, D_debug;
 
-assign mem0 = dut.ram.mem[12'h00F];
-assign mem1 = dut.ram.mem[12'h0F0];
+assign mem0 = dut.ram0.mem[12'h00F];
+assign mem1 = dut.ram3.mem[12'h1F0];
 assign D_debug = dut.D;
 
 ram_datapath dut(.W(W), .clk(clk), .rst(rst), .EN_ALU(EN_ALU), .EN_B(EN_B), .EN_ADDR(EN_ADDR), 
-.K_SEL(K_SEL), .PC_SEL(PC_SEL), .C0(C0), .CS(CS), .WE(WE), .OE(OE), .SA(SA), .SB(SB), .DA(DA), .FS(FS), .K(K), .CU(CU), 
+.K_SEL(K_SEL), .PC_SEL(PC_SEL), .C0(C0), .WE(WE), .OE(OE), .SA(SA), .SB(SB), .DA(DA), .FS(FS), .K(K), .CU(CU), 
 .Status(Status), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7), .PC_in(PC_in));
 
 
@@ -23,7 +23,6 @@ end
 initial begin
 	clk <= 1'b0;
 	rst <= 1'b1;
-	CS <= 1'b0;
 	#10;
 	rst <= 1'b0;
 	
@@ -48,7 +47,7 @@ initial begin
 	//cont
 	// ADDI X1, X31, K
 	#10;
-	K <= 64'hFFFF_0000_0000_00F0;
+	K <= 64'hFFFF_0000_0000_31F0;
 	CU <= 64'hx;
 	K_SEL <= 1'b1;
 	PC_SEL <= 1'b0;
@@ -157,7 +156,6 @@ initial begin
 	EN_B <= 1'b1;
 	EN_ADDR <= 1'b1;
 	W <= 1'b0;
-	CS <= 1'b1;
 	OE <= 1'b0;
 	WE <= 1'b1;
 	
@@ -177,7 +175,6 @@ initial begin
 	EN_B <= 1'b1;
 	EN_ADDR <= 1'b1;
 	W <= 1'b0;
-	CS <= 1'b1;
 	OE <= 1'b0;
 	WE <= 1'b1;
 	//end write from registers to memory
@@ -198,7 +195,6 @@ initial begin
 	EN_B <= 1'b0;
 	EN_ADDR <= 1'b1;
 	W <= 1'b1;
-	CS <= 1'b1;
 	WE <= 1'b0;
 	OE <= 1'b1;
 	
@@ -218,7 +214,6 @@ initial begin
 	EN_ALU <= 1'b0;
 	EN_B <= 1'b0;
 	EN_ADDR <= 1'b1;
-	CS <= 1'b1;
 	WE <= 1'b0;
 	OE <= 1'b1;
 	W <= 1'b1;
