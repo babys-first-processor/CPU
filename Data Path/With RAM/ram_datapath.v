@@ -13,11 +13,13 @@ module ram_datapath(
 	input [63:0] CU, //External signal to K or PC_in thru mux, from control unit
 	input [4:0] SA, SB, DA, FS, //Regfile A address, B address, Write Address, ALU function select
 	input [63:0] K, //Constant input from control word
-	output [63:0] PC_in, //Input to program counter 
+	output [31:0] PC_in, //Input to program counter 
 	output [3:0] Status, //status flags, Overflow (V), Carry(C), Negative(N), Zero(Z)
-	output [63:0] r0, r1, r2, r3, r4, r5, r6, r7); //output from regfile for testing
+	output [63:0] r0, r1, r2, r3, r4, r5, r6, r7, //output from regfile for testing
+	output [63:0] D, //Data bus
+	output [31:0] ADDR); //Address bus
 
-wire [63:0] A, B, F, D, ADDR, B_out; //regfile A and B outputs, ALU output, Data bus, Address Bus, output from B/K mux
+wire [63:0] A, B, F, B_out; //regfile A and B outputs, ALU output, output from B/K mux
 wire [7:0] CS; //Chip select for RAM
 
 //instantiate submodules
@@ -59,15 +61,14 @@ defparam stack.ADDR_WIDTH = 12;
 
 //instantiate unnamed (see: simple) components
 Mux2to1 const_sel(.F(B_out), .A(K), .B(B), .Sel(K_SEL)); //A is constant, B is output from reg file
-Mux2to1 counter_sel(.F(PC_in), .A(A), .B(CU), .Sel(PC_SEL)); //A is output A from regfile, B is input from external source
-tribuf B_enable(.in(B), .out(D), .control(EN_B)); //Connects B from regfile to data bus when enabled, high z otherwise
-tribuf ALU_enable(.in(F), .out(D), .control(EN_ALU)); //connects output of alu to data bus when enabled, high z otherwise
-tribuf ADDR_enable(.in(F), .out(ADDR), .control(EN_ADDR)); //connects output of alu to address bus when enabled, high z otherwise
+Mux2to1_32bit counter_sel(.F(PC_in), .A(CU[31:0]), .B(A[31:0]), .Sel(PC_SEL)); //A is output A from regfile, B is input from external source
+tribuf64 B_enable(.in(B), .out(D), .control(EN_B)); //Connects B from regfile to data bus when enabled, high z otherwise
+tribuf64 ALU_enable(.in(F), .out(D), .control(EN_ALU)); //connects output of alu to data bus when enabled, high z otherwise
+tribuf32 ADDR_enable(.in(F[31:0]), .out(ADDR), .control(EN_ADDR)); //connects output of alu to address bus when enabled, high z otherwise
 decoder3to8 chip_select(.in(ADDR[14:12]), .out(CS));
-
 endmodule //end regfile_and_alu_datapath
 
-/*
+
 //2-to-1 Mux definition
 module Mux2to1(
 	input [63:0] A, B,
@@ -77,15 +78,28 @@ module Mux2to1(
 assign F = Sel ? A : B; // if FS is 0, choose B, else chose A. 
 endmodule//end mux
 
+module Mux2to1_32bit(
+	input [31:0] A, B,
+	input Sel,
+	output [31:0] F);
+	
+assign F = Sel ? A : B; // if FS is 0, choose B, else chose A. 
+endmodule//end mux
+
 //Tri-State Buffer definition
-module tribuf(
+module tribuf64(
 	input [63:0] in,
 	input control,
 	output [63:0] out);
-	
 assign  out = control ? in : 64'bz;
 endmodule //end tribuf
-*/
+
+module tribuf32(
+	input [31:0] in,
+	input control,
+	output [31:0] out);
+assign  out = control ? in : 32'bz;
+endmodule //end tribuf
 
 //3 to 8 decoder definition
 module decoder3to8(
