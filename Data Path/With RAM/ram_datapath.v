@@ -10,7 +10,6 @@ module ram_datapath(
 	input C0, //Carry in bit to ALU
 	input WE, //RAM Write Enable
 	input OE, //RAM Output Enable
-	input [63:0] CU, //External signal to K or PC_in thru mux, from control unit
 	input [4:0] SA, SB, DA, FS, //Regfile A address, B address, Write Address, ALU function select
 	input [63:0] K, //Constant input from control word
 	output [31:0] PC_in, //Input to program counter 
@@ -20,24 +19,26 @@ module ram_datapath(
 	output [31:0] ADDR); //Address bus
 
 wire [63:0] A, B, F, B_out; //regfile A and B outputs, ALU output, output from B/K mux
-wire [7:0] CS; //Chip select for RAM
+//wire [7:0] CS; //Chip select for RAM
 
 //instantiate submodules
 regfile32x64 regfile(.rdDataA(A), .rdDataB(B), .rdAddrA(SA), .rdAddrB(SB), .wrData(D), .wrAddr(DA), .write(W), .reset(rst), .clk(clk), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7));
 ALU_LEGv8 alu(.A(A), .B(B_out), .FS(FS), .C0(C0), .F(F), .status(Status));
-ram_sp_sr_sw ram0(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[0]), .we(WE),	.oe(OE));
-ram_sp_sr_sw ram1(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[1]), .we(WE),	.oe(OE));
-ram_sp_sr_sw ram2(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[2]), .we(WE),	.oe(OE));
-ram_sp_sr_sw ram3(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[3]), .we(WE),	.oe(OE));
+ram_sp_sr_sw ram0(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(1'b1), .we(WE), .oe(OE));
+/*
+ram_sp_sr_sw ram1(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(ADDR[12]), .we(WE),	.oe(OE));
+ram_sp_sr_sw ram2(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(~ADDR[13]), .we(WE),	.oe(OE));
+ram_sp_sr_sw ram3(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(ADDR[13]), .we(WE),	.oe(OE));
 ram_sp_sr_sw ram4(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[4]), .we(WE),	.oe(OE));
 ram_sp_sr_sw ram5(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[5]), .we(WE),	.oe(OE));
 ram_sp_sr_sw ram6(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[6]), .we(WE),	.oe(OE));
 ram_sp_sr_sw stack(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(CS[7]), .we(WE),	.oe(OE));
-
+*/
 //set size of ram
 defparam ram0.DATA_WIDTH = 64;
 defparam ram0.ADDR_WIDTH = 12;
 
+/*
 defparam ram1.DATA_WIDTH = 64;
 defparam ram1.ADDR_WIDTH = 12;
 
@@ -58,14 +59,14 @@ defparam ram6.ADDR_WIDTH = 12;
 
 defparam stack.DATA_WIDTH = 64;
 defparam stack.ADDR_WIDTH = 12;
-
+*/
 //instantiate unnamed (see: simple) components
 Mux2to1 const_sel(.F(B_out), .A(K), .B(B), .Sel(K_SEL)); //A is constant, B is output from reg file
-Mux2to1_32bit counter_sel(.F(PC_in), .A(CU[31:0]), .B(A[31:0]), .Sel(PC_SEL)); //A is output A from regfile, B is input from external source
+Mux2to1_32bit counter_sel(.F(PC_in), .A(K[31:0]), .B(A[31:0]), .Sel(PC_SEL)); //A is output A from regfile, B is input from external source
 tribuf64 B_enable(.in(B), .out(D), .control(EN_B)); //Connects B from regfile to data bus when enabled, high z otherwise
 tribuf64 ALU_enable(.in(F), .out(D), .control(EN_ALU)); //connects output of alu to data bus when enabled, high z otherwise
 tribuf32 ADDR_enable(.in(F[31:0]), .out(ADDR), .control(EN_ADDR)); //connects output of alu to address bus when enabled, high z otherwise
-decoder3to8 chip_select(.in(ADDR[14:12]), .out(CS));
+//decoder3to8 chip_select(.in(ADDR[14:12]), .out(CS));
 endmodule //end regfile_and_alu_datapath
 
 

@@ -24,7 +24,7 @@ assign D = PS == 2'b00 ? out :
 			  PS == 2'b01 ? out + 32'd1 :
 			  PS == 2'b10 ? in : out + in;
 			  
-parameter PC_RESET_VALUE = 32'h0000_8000;
+parameter PC_RESET_VALUE = 32'h0000_0800;
 always @(posedge clk or posedge rst)
 	begin
 		if (rst) out <= PC_RESET_VALUE;
