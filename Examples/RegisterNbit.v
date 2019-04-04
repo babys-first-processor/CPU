@@ -10,7 +10,7 @@ module RegisterNbit(Q, D, L, R, clock);
 
 always @(posedge clock or posedge R) begin
 	if(R)
-		Q <= 1'b0;
+		Q <= {N{1'b0}};
 	else if(L)
 		Q <= D;
 	else

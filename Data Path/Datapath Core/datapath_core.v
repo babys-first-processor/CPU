@@ -2,7 +2,7 @@ module datapath_core(
 	input clk,						//clock
 	input rst, 						//reset
 	input AS, 						//Address Select
-	input [2:0] DS, 				//Data Select
+	input [1:0] DS, 				//Data Select
 	input [1:0] PS, 				//PC function select
 	input PC_Sel, 					//Choose A or K for PC_in
 	input K_Sel, 					//Choose B or K for ALU in

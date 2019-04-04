@@ -11,8 +11,8 @@ wire [63:0] r0, r1, r2, r3, r4, r5, r6, r7, mem0;
 
 datapath_core dut(clk, rst, AS, DS, PS, PC_Sel, K_Sel, IL, SL, FS, C0, MW, RW, DA, SA, SB, K, SF, IR_Out);
 
-assign dut.regfile_alu_ram.ram0.mem[12'h800] = {32'b0, 32'b1000100100_000000000111_11111_00010};
-assign dut.regfile_alu_ram.ram0.mem[12'h801] = {32'b0, 32'b1000100100_000000001110_00010_00011};
+assign dut.regfile_alu_ram.ram0.mem[12'h800] = {32'b0, 32'b1001000100_000000000111_11111_00010};
+assign dut.regfile_alu_ram.ram0.mem[12'h801] = {32'b0, 32'b1001000100_000000001110_00010_00011};
 assign dut.regfile_alu_ram.ram0.mem[12'h802] = {32'b0, 32'b11111000000_000001110_00_00010_00011};
 assign dut.regfile_alu_ram.ram0.mem[12'h803] = {32'b0, 32'b11111000010_000000000_00_00011_00001};
 assign r0 = dut.r0;
@@ -39,7 +39,7 @@ initial begin
 	
 	//Instruction Fetch - gets instruction from rom and stores in IR
 	K <= 64'hx;
-	AS <= 1'b1;
+	AS <= 1'b0;
 	DS <= 2'b11;
 	PS <= 2'b01;
 	K_Sel <= 1'bx;
@@ -57,7 +57,7 @@ initial begin
 	#10;
 	//ADDI X2, X31, 7 - This will be determined by control unit from IR input. 
 	K <= 64'h0000_0000_0000_0007;
-	AS <= 1'b1;
+	AS <= 1'b0;
 	DS <= 2'b00;
 	PS <= 2'b00;
 	K_Sel <= 1'b1;
@@ -76,7 +76,7 @@ initial begin
 	
 	//Instruction Fetch - gets instruction from rom and stores in IR
 	K <= 64'hx;
-	AS <= 1'b1;
+	AS <= 1'b0;
 	DS <= 2'b11;
 	PS <= 2'b01;
 	K_Sel <= 1'bx;
@@ -94,7 +94,7 @@ initial begin
 	#10;
 	//ADDI X3, X2, 14 = 21 decimal
 	K <= 64'h0000_0000_0000_000E;
-	AS <= 1'b1;
+	AS <= 1'b0;
 	DS <= 2'b00;
 	PS <= 2'b00;
 	K_Sel <= 1'b1;
@@ -130,7 +130,7 @@ initial begin
 	
 	#10;
 	
-	//STUR X3, [X2, #14] writes to M[X2 + 14] = M[21]
+	//STUR X3, [X2, #14] writes value in X3 to M[X2 + 14] = M[21]
 	K <= 64'h0000_0000_0000_000E;
 	AS <= 1'b0;
 	DS <= 2'b01;
