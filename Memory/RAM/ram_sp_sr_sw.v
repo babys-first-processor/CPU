@@ -21,6 +21,10 @@ reg [DATA_WIDTH-1:0] data_out;
 reg [DATA_WIDTH-1:0] mem [0:RAM_DEPTH-1];
 reg oe_r;
 	
+initial begin
+	$readmemb("Programs/Fibonacci.mem", mem, 12'h800, 12'hFFF);
+end //initialize memory (instruction memory in ROM specifically), starting at 0x800 to the end of the RAM, this may be reduced to make space for peripheral memory
+
 //Tri-State Buffer
 assign data = (cs && oe && !we) ? data_out : {DATA_WIDTH{1'bz}};
 
