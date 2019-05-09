@@ -11,8 +11,7 @@ reg [31:0] prev_instruction;
 wire [1:0] state;
 wire [3:0] cond_flag;
 wire [3:0] constant_sel;
-wire [1:0]  EX0_sel,data_reg_sel, branch_sel;
-wire [2:0]  EX1_sel;
+wire [1:0]  EX0_sel, EX1_sel, data_reg_sel, branch_sel;
 wire [33:0] control_word, IF, EX0, EX1, EX2, data_immediate, branches, mem, data_reg;
 reg [33:0] cond_branch;
 wire [63:0] constant;
@@ -73,12 +72,12 @@ assign EX0 = EX0_sel == 2'b00 ? data_immediate :
 				 EX0_sel == 2'b01 ? branches :
 				 EX0_sel == 2'b10 ? mem : data_reg;
 				 
-assign EX1_sel = {instruction[30], instruction[29], instruction[24]};
+assign EX1_sel = {instruction[30], instruction[29] instruction[24]};
 
 assign EX1 = {status[0], EX1_sel} == 4'b1010 ? 34'b11_0_00_10_1_0_0_0_00000_0_0_0_11110_00000_00000 : //Branch if Z=1 and opcode is CBZ
 				 {status[0], EX1_sel} == 3'b0011 ? 34'b11_0_00_10_1_0_0_0_00000_0_0_0_11110_00000_00000 : //Branch if Z=0 and opcode is CBNZ
 				 EX1_sel == 3'b110 ? {19'b00_0_00_01_0_1_0_0_01000_0_0_1, prev_instruction[4:0], prev_instruction[4:0], 5'b00000} : 
-				 {instruction[31], instruction[29]} == 2'b00 ? 34'b00_1__11__00__0___0__1__0__00000__0__0__0__00000_00000__00000:
+				 EX1_sel[2:1] == 2'b00 ? 34'b00_1__11__00__0___0__1__0__00000__0__0__0__00000_00000__00000;
 				 34'b00_0_00_01_0_0_0_0_00000_0_0_0_00000_00000_00000; //Complete MOVK by adding constant to masked value ///// NOP for CBZ/CBNZ fallthrough. 
 
 
@@ -94,22 +93,22 @@ assign data_immediate = instruction[25:23] == 3'b010 ? {10'b00_0_00_01_0_1_0, in
 								
 //status, //VCNZ
 always @* begin
-	if((status[0]) && ({instruction[26],instruction[3:0]} == 5'b10000)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(~status[0] && ({instruction[26],instruction[3:0]} == 5'b10001)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(~status[2] && ({instruction[26],instruction[3:0]} == 5'b10010)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(status[2] && ({instruction[26],instruction[3:0]} == 5'b10011)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(~status[1] && ({instruction[26],instruction[3:0]} == 5'b10100)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(status[1] && ({instruction[26],instruction[3:0]} == 5'b10101)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(~status[3] && ({instruction[26],instruction[3:0]} == 5'b10110)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(status[3] && ({instruction[26],instruction[3:0]} == 5'b10111)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if((status[2] & ~status[0]) && ({instruction[26],instruction[3:0]} == 5'b11000)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ	
-	else if((~status[2] | status[0]) && ({instruction[26],instruction[3:0]} == 5'b11001)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if((~(status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11010)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if((status[1]^status[3]) && ({instruction[26],instruction[3:0]} == 5'b11011)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if((~status[0] & ~(status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11100)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if((status[0] | (status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11101)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(1'b1 && ({instruction[26],instruction[3:0]} == 5'b11110)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
-	else if(1'b1 && ({instruction[26],instruction[3:0]} == 5'b11111)) cond_branch <= {3'b10_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	if((status[0]) && ({instruction[26],instruction[3:0]} == 5'b10000)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(~status[0] && ({instruction[26],instruction[3:0]} == 5'b10001)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(~status[2] && ({instruction[26],instruction[3:0]} == 5'b10010)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(status[2] && ({instruction[26],instruction[3:0]} == 5'b10011)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(~status[1] && ({instruction[26],instruction[3:0]} == 5'b10100)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(status[1] && ({instruction[26],instruction[3:0]} == 5'b10101)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(~status[3] && ({instruction[26],instruction[3:0]} == 5'b10110)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(status[3] && ({instruction[26],instruction[3:0]} == 5'b10111)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if((status[2] & ~status[0]) && ({instruction[26],instruction[3:0]} == 5'b11000)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ	
+	else if((~status[2] | status[0]) && ({instruction[26],instruction[3:0]} == 5'b11001)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if((~(status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11010)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if((status[1]^status[3]) && ({instruction[26],instruction[3:0]} == 5'b11011)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if((~status[0] & ~(status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11100)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if((status[0] | (status[1]^status[3])) && ({instruction[26],instruction[3:0]} == 5'b11101)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(1'b1 && ({instruction[26],instruction[3:0]} == 5'b11110)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
+	else if(1'b1 && ({instruction[26],instruction[3:0]} == 5'b11111)) cond_branch <= {3'b00_0, instruction[31], 14'b0_10_1_0_0_0_00000_0_0, instruction[31], 15'b11110_00000_00000}; //branch on EQ
 	else cond_branch <= 34'b0;	//NOP if the cond field of the instruction does not match one of the cond encodings specified by the status flags. These encodings are implicitly defined on the LHS of the cases.
 										//Condition codes can be found explicitly in the instruction set/ARM manual, but due to the nature of the later conditions could not be implemented explicitly. 
 end
@@ -136,4 +135,3 @@ assign data_reg = {instruction[28], instruction[24]} == 2'b00 ? {8'b00_0_01_0_0_
 						{11'b00_0_00_01_0_1_0_0, 2'b00, instruction[21], 2'b00, 3'b0_0_1, instruction[4:0], instruction[9:5], 5'b00000};
 
 endmodule
-

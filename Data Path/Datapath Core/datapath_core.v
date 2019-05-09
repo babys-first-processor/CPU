@@ -15,13 +15,13 @@ module datapath_core(
 	input [4:0] DA, 				//Regfile D address
 	input [4:0] SA, SB, 			//Regfile A address and B address
 	input [63:0] K, 				//Constant input
-	output [63:0] r0, 
+	output [15:0] r0, r1, r2, r3, r4, r5, r6, r7,
 	output reg [3:0] SF, 		//Status Flags
-	output [31:0] IR_Out); //Output from instruction register
+	output [31:0] IR_Out);     //Output from instruction register
 
 wire EN_ADDR_ALU, EN_ADDR_PC, EN_DATA_ALU, EN_DATA_B, EN_DATA_PC, MR;
 wire [3:0]Status;
-wire [63:0] D, r1, r2, r3, r4, r5, r6, r7;
+wire [63:0] D;
 wire [31:0] ADDR, PC_in, PC_out;
 
 
@@ -55,10 +55,11 @@ defparam regfile_alu_ram.ram0.ADDR_WIDTH = 12;
 //rom_case rom(.out(D[31:0]), .address(ADDR[15:0]), .oe(MR));
 
 //program counter
-program_counter PC(.clk(~clk), .rst(rst), .in(PC_in), .PS(PS), .out(PC_out));
+program_counter PC(.clk(clk), .rst(rst), .in(PC_in), .PS(PS), .out(PC_out));
+defparam PC.PC_RESET_VALUE = 12'h800;
 
 //instruction register
-RegisterNbit IR(.Q(IR_Out), .D(D[31:0]), .L(IL), .R(rst), .clock(~clk));
+RegisterNbit IR(.Q(IR_Out), .D(D[31:0]), .L(IL), .R(rst), .clock(clk));
 defparam IR.N = 32;
 
 //tri state buffers for buses

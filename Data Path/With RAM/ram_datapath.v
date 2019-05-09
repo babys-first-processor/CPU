@@ -14,17 +14,34 @@ module ram_datapath(
 	input [63:0] K, //Constant input from control word
 	output [31:0] PC_in, //Input to program counter 
 	output [3:0] Status, //status flags, Overflow (V), Carry(C), Negative(N), Zero(Z)
-	output [63:0] r0, r1, r2, r3, r4, r5, r6, r7, //output from regfile for testing
-	output [63:0] D, //Data bus
+	output [15:0] r0, r1, r2, r3, r4, r5, r6, r7, //output from regfile for testing
+	inout [63:0] D, //Data bus
 	output [31:0] ADDR); //Address bus
 
 wire [63:0] A, B, F, B_out; //regfile A and B outputs, ALU output, output from B/K mux
+wire [31:0] rom_out;
+reg mem_select;
 //wire [7:0] CS; //Chip select for RAM
 
 //instantiate submodules
 regfile32x64 regfile(.rdDataA(A), .rdDataB(B), .rdAddrA(SA), .rdAddrB(SB), .wrData(D), .wrAddr(DA), .write(W), .reset(rst), .clk(clk), .r0(r0), .r1(r1), .r2(r2), .r3(r3), .r4(r4), .r5(r5), .r6(r6), .r7(r7));
 ALU_LEGv8 alu(.A(A), .B(B_out), .FS(FS), .C0(C0), .F(F), .status(Status));
-ram_sp_sr_sw ram0(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(1'b1), .we(WE), .oe(OE));
+ram_sp_sr_sw ram0(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(~mem_select), .we(WE), .oe(OE));
+rom_case rom(.out(rom_out), .address(ADDR[11:0]));
+
+//tribuf to prevent data corruption of shared bus
+tribuf64 rom_buffer(.in({32'b0, rom_out}), .control(mem_select & OE), .out(D));
+
+
+always @(negedge clk) begin
+if (ADDR < 12'h800) begin
+		mem_select <= 1'b0;
+end else if (ADDR >= 12'h800) begin
+		mem_select <= 1'b1;
+end
+end
+
+
 /*
 ram_sp_sr_sw ram1(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(ADDR[12]), .we(WE),	.oe(OE));
 ram_sp_sr_sw ram2(.clk(~clk), .address(ADDR[11:0]), .data(D), .cs(~ADDR[13]), .we(WE),	.oe(OE));

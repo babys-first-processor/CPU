@@ -7,12 +7,12 @@ wire [63:0] D, reg_out, r1, r2, r3, r4, r5, r6, r7;
 wire [33:0] control_word;
 wire [31:0] IR_Out;
 wire [1:0] EX0_sel;
-wire AS, PC_Sel, K_Sel, IL, SL, C0, MW, RW;
+wire AS, PC_Sel, K_Sel, IL, SL, C0, MW, RW, ram_select, rom_select;
 wire [1:0] NS, DS, PS;
 wire [4:0] FS, DA, SA, SB;
 wire [63:0] ALU_out, K;
 wire [1:0] state;
-wire [31:0] PC_out;
+wire [31:0] PC_out, rom_out;
 
 CPU dut(clk, rst, reg_out, status);
 
@@ -26,6 +26,10 @@ assign r7 = dut.core.r7;
 assign D = dut.core.D;
 assign ALU_out = dut.core.regfile_alu_ram.F;
 
+
+assign ram_select = dut.core.regfile_alu_ram.ram_select;
+assign rom_select = dut.core.regfile_alu_ram.rom_select;
+assign rom_out = dut.core.regfile_alu_ram.rom_out;
 assign PC_out = dut.core.PC_out;
 assign K = dut.K;
 assign control_word = dut.control_word;
@@ -86,6 +90,8 @@ assign dut.core.regfile_alu_ram.ram0.mem[12'h805] = {32'b0, 32'b1001000100_00000
 //0x805 : CMPI X0, 9999
 //0x806 : B.GT 0x800
 //0x807 : B 0x802 
+
+/*
 assign dut.core.regfile_alu_ram.ram0.mem[12'h800] = {32'b0, 32'b1001000100_000000000000_11111_00000}; //ADDI
 assign dut.core.regfile_alu_ram.ram0.mem[12'h801] = {32'b0, 32'b1001000100_000000000001_11111_00001}; //ADDI
 assign dut.core.regfile_alu_ram.ram0.mem[12'h802] = {32'b0, 32'b10001011000_00000_000000_00001_00010}; //ADD
@@ -96,6 +102,14 @@ assign dut.core.regfile_alu_ram.ram0.mem[12'h806] = {32'b0, 32'b01010100_0000000
 //assign dut.core.regfile_alu_ram.ram0.mem[12'h807] = {32'b0, 32'b1001000100_000000000000_11111_11111}; //NOP
 assign dut.core.regfile_alu_ram.ram0.mem[12'h807] = {32'b0, 32'b000101_00000000000000100000000010}; //B
 //assign dut.core.regfile_alu_ram.ram0.mem[12'h808] = {32'b0, 32'b1001000100_000000000000_11111_11111}; //NOP
+
+
+
+assign dut.core.regfile_alu_ram.ram0.mem[12'h800] = {32'b0, 32'b1001000100_000000000000_11111_11111};
+assign dut.core.regfile_alu_ram.ram0.mem[12'h801] = {32'b0, 32'b000101_00000000000000100001010000}; //B 0x850
+assign dut.core.regfile_alu_ram.ram0.mem[12'h850] = {32'b0, 32'b000101_00000000000000100000000001}; //B 0x800
+assign dut.core.regfile_alu_ram.ram0.mem[12'h851] = {32'b0, 32'b1001000100_000000000000_11111_11111}; //NOP
+*/
 
 always begin
 	#10 clk = ~clk;

@@ -8,7 +8,7 @@ module regfile32x64(
    output [63:0] rdDataA,
    input [4:0] rdAddrB,
    output [63:0] rdDataB,
-	output [63:0] r0, r1, r2, r3, r4, r5, r6, r7);
+	output [15:0] r0, r1, r2, r3, r4, r5, r6, r7);
 
 /*
 wire [31:0] m; //decoder output
@@ -244,13 +244,13 @@ always @(posedge clk or posedge reset)
 		endcase
 	end
 	
-	assign r0 = reg0;
-	assign r1 = reg1;
-	assign r2 = reg2;
-	assign r3 = reg3;
-	assign r4 = reg4;
-	assign r5 = reg5;
-	assign r6 = reg6;
-	assign r7 = reg7;
+	assign r0 = reg0[15:0];
+	assign r1 = reg1[15:0];
+	assign r2 = reg2[15:0];
+	assign r3 = reg3[15:0];
+	assign r4 = reg4[15:0];
+	assign r5 = reg5[15:0];
+	assign r6 = reg6[15:0];
+	assign r7 = reg7[15:0];
 
 endmodule
